@@ -45,6 +45,11 @@ class AppController < ApplicationController
             return
         end
         
+        rs = App.find_by_sql("select * from apps where appid='#{appid}'")
+        if (rs && rs.size >0)
+            error("Already submit, please don't resubmit")
+            return
+        end
         App.new({
             :appid=>appid,
             :name=>name,
