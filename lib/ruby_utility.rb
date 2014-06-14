@@ -8,7 +8,7 @@ def hash_to_querystring(hash)
   end
   hash.keys.inject('') do |query_string, key|
     query_string << '&' unless key == hash.keys.first
-    query_string << "#{URI.encode(key.to_s)}=#{URI.encode(hash[key])}"
+    query_string << "#{URI.encode(key.to_s)}=#{URI.encode(hash[key].to_s)}"
   end
 end
 
@@ -44,7 +44,7 @@ def http_post(url, p, https=false, port=nil)
   http = Net::HTTP.new(uri.host, _port)
   http.use_ssl = true if https
   
-  p "-->port:#{_port}, host:#{uri.host}"
+  p "-->port:#{_port}, host:#{uri.host}, p:#{p.inspect}"
 	 # Net::HTTP.post_form( url, p)
 	 resp, data = http.post(uri.path, hash_to_querystring(p))
 	 puts "===>http code #{resp}"

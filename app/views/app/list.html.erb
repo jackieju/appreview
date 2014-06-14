@@ -1,0 +1,13 @@
+<% @list.each {|app|%>
+		<div style="float:left;width:175px;height:155px;margin:10px 10px 10px 10px;border:0px solid red;">
+			<div style="text-align:center;font-size:12pt;width:100%;"><img class="app_logo" src="/images/Apps-48.png" ></div>
+			<div style="text-align:center;font-size:12pt;width:100%;">
+			<% if app.st == 100 %>
+			<img src="/images/status-green.png" border=0 />
+			<% else %>
+			<img src="/images/status-red.png" border=0 />
+			
+			<% end %>
+			<%=app.name%></div>
+		</div>
+<% } %>

@@ -7,6 +7,10 @@ class CreateApps < ActiveRecord::Migration
             t.integer :uid
             t.string :ver
             t.integer :st  # review status
+            t.integer :type # 0: addon 
+            t.integer :cat1
+            t.integer :cat2
+            t.integer :cat3
             t.text  :prop
             
 

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20140613100507) do
     t.integer  "uid"
     t.string   "ver"
     t.integer  "st"
+    t.integer  "apptype"
     t.text     "prop"
     t.datetime "created_at"
     t.datetime "updated_at"

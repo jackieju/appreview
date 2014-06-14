@@ -1,5 +1,20 @@
 class AppController < ApplicationController
     
+    def index
+        appid=params[:id]
+        
+        
+    end
+    
+    def show
+        
+    end
+    
+    def list
+        @list = App.find_by_sql("select * from apps where uid=#{@user.id}")
+        
+    end
+    
     # submit by developer
     def presubmit
         appid = params[:appid]
@@ -14,6 +29,7 @@ class AppController < ApplicationController
         name = params[:app_name]
         desc = params[:app_desc]
         apptype = params[:app_type]
+        ver = params[:ver]
         
         p params.inspect
         if appid == nil
@@ -28,18 +44,32 @@ class AppController < ApplicationController
             error(ret['error'])
             return
         end
+        
+        App.new({
+            :appid=>appid,
+            :name=>name,
+            :desc=>desc,
+            :uid=>@user.id,
+            :ver=>ver,
+            :st=>0,
+            :type=>apptype,
+        }).save!
       
     end
     
     # list all app of developer
-    def listuserapp
-        
-    end
+    # def listuserapp
+    #     @apps = App.find_by_sql("select * from apps where uid=#{@user.id}")
+    #     
+    # end
     
+    # abandon the review
     def abandon
     end
     
+    # delete a published app will delete it on app store
     def delapp
+        
     end
     
    
